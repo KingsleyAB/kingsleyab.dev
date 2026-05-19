@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Base layer — typography defaults, smooth scroll, selection color.
+   --------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  /* Selection in warm accent so it feels intentional, not the OS default blue */
+  ::selection {
+    background: rgba(212, 175, 106, 0.25);
+    color: #f5f2eb;
+  }
+
+  /* Quiet scrollbar — present but not loud */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0b0d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f1f24;
+    border-radius: 8px;
+    border: 2px solid #0b0b0d;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a2a30;
+  }
+
+  /* Focus ring tuned for the dark palette */
+  *:focus-visible {
+    outline: 1px solid rgba(212, 175, 106, 0.6);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable component-y classes.
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* The bordered monospace pills used for resume/social/contact buttons. */
+  .btn-pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-[12px] tracking-[0.18em]
+           uppercase font-mono text-ink-soft border border-line rounded-sm
+           transition-all duration-300 hover:text-ink hover:border-ink-soft
+           hover:bg-white/[0.02];
+  }
+
+  /* Section label — small, spaced, accent-toned. Used above section titles. */
+  .eyebrow {
+    @apply text-[11px] tracking-mega-wide uppercase font-mono text-accent;
+  }
+
+  /* Big section heading — display serif, tight tracking. */
+  .h-section {
+    @apply font-display text-4xl md:text-5xl text-ink leading-[1.05] tracking-tight;
+  }
+
+  /* Underline-on-hover link, slightly slower than default for that careful feel. */
+  .link-underline {
+    @apply relative inline-block text-ink transition-colors duration-300 hover:text-accent;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-accent transition-all duration-500;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities.
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
