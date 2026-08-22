@@ -144,35 +144,11 @@ different feel.
 
 ---
 
-## 📬 Wiring up the contact form
+## 📬 Contact form
 
-The form is currently **simulated** — it validates input and shows a
-success state after a delay, but doesn't actually send anything. To wire
-it up for real:
-
-### Option A: Formspree (easiest)
-
-1. Sign up at [formspree.io](https://formspree.io) and create a new form.
-2. Grab the endpoint URL — looks like `https://formspree.io/f/xxxxxxx`.
-3. Open `src/components/sections/Contact.tsx`, find the `handleSubmit`
-   function, and replace the `// SIMULATED SEND` block with:
-
-   ```ts
-   const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-     body: JSON.stringify({ name, email, message }),
-   });
-   if (!res.ok) throw new Error('Send failed');
-   ```
-
-4. Remove the "this form is currently simulated" note at the bottom of the
-   form if you want.
-
-### Option B: Resend / SendGrid / your own API route
-
-Create a Next.js API route at `src/app/api/contact/route.ts` and `POST`
-the form data to it. Same pattern as above, just swap the URL.
+The form submits directly to [Formspree](https://formspree.io) from
+`handleSubmit` in `src/components/sections/Contact.tsx`. To point it at a
+different form, swap the endpoint URL in the `fetch` call there.
 
 ---
 
@@ -198,8 +174,6 @@ Every git push to your main branch redeploys automatically.
 
 Quality-of-life upgrades you might want once the site is live:
 
-- **Real contact form** — wire up Formspree per the instructions above so
-  you can stop sending people to your inbox manually.
 - **Active section highlighting** in the navbar — use IntersectionObserver
   to highlight the currently-visible section in the top nav.
 - **MDX-powered blog** — drop in `next-mdx-remote` and add a `/writing`

@@ -13,9 +13,7 @@ type FormState = 'idle' | 'sending' | 'sent' | 'error';
  * Layout: two columns on desktop — contact info on the left, message form
  * on the right. Stacks on mobile.
  *
- * The form is currently SIMULATED. It validates fields and shows a "sent"
- * state after a brief delay. To wire it up for real, swap the `simulateSend`
- * call below for a Formspree fetch (see README — "Wiring up the contact form").
+ * The form submits directly to Formspree.
  */
 export default function Contact() {
   return (

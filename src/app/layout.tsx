@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: personal.name }],
   creator: personal.name,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
