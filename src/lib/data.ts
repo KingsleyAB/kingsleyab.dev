@@ -164,6 +164,25 @@ export const writing: Article[] = [
       'Firmware debugging is frustrating because the machine is slow to answer. But over time it teaches you to think carefully before you touch the system — and that\'s a habit worth having no matter what you\'re building.',
     ],
   },
+  {
+    id: 'where-boot-time-actually-goes',
+    title: 'Where Boot Time Actually Goes',
+    category: 'Performance',
+    readingTime: '5 min read',
+    excerpt:
+      'Most of the boot-time delay isn\'t where you\'d guess it is.',
+    body: [
+      'Before I measure anything, I usually already have a guess about where the time is going. Memory detection feels slow. Memory training feels slow. Everything else feels fine. That guess is almost always wrong somewhere.',
+      'The slow part is usually not the part everyone\'s watching. It\'s some polling loop waiting on a status bit, or a delay that got copied over from an older platform and nobody ever went back to check. The boring-looking stuff ends up costing more time than the stuff that looks hard.',
+      'Profiling early boot isn\'t like profiling normal software. There\'s no OS yet, no threads, sometimes not even a working timer. So you end up building your own way to measure things — toggling a pin, writing a value to a scratch register, printing a counter over UART — just so you have a number you can actually trust.',
+      'Once you have real numbers, the next problem is that they\'re noisy. The same delay can take a couple milliseconds one boot and four times that the next, depending on temperature, voltage, or which retry path got hit. If you optimize off one run, you\'re probably chasing noise instead of a real problem. You need enough samples to know the difference.',
+      'A lot of the easy wins come from delays nobody ever double-checked. Some timeout set generously "just in case" years ago, still sitting there because nobody had a reason to touch it. Trimming that stuff is unglamorous, but it adds up, and it\'s low risk since it was never doing real work in the first place.',
+      'The riskier wins are when you take two steps that don\'t actually depend on each other and run them at the same time instead of one after another. That sounds simple until you realize two steps that look unrelated can still be touching the same piece of hardware state underneath. You have to actually check the dependency, not just assume it\'s fine because it looks fine.',
+      'It\'s also easy to get stuck staring at the average boot time and forget that some boots are way slower than others. A platform that\'s fast most of the time but occasionally takes way longer isn\'t actually a good result. The slow outliers matter more than people give them credit for.',
+      'What I like about this kind of work is that it doesn\'t let you guess for long. In normal software, a profiler basically hands you the answer. In early boot, you usually have to build the tool that gets you the answer first.',
+      'Most of the time, the milliseconds aren\'t where I thought they\'d be. That\'s kind of just how it goes — if it were obvious, someone would\'ve already fixed it.',
+    ],
+  },
 ];
 
 export const contact = {
