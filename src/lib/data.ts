@@ -183,6 +183,21 @@ export const writing: Article[] = [
       'Most of the time, the milliseconds aren\'t where I thought they\'d be. That\'s kind of just how it goes — if it were obvious, someone would\'ve already fixed it.',
     ],
   },
+  {
+    id: 'grad-school-while-working-full-time',
+    title: 'Grad School While Working Full-Time',
+    category: 'Career',
+    readingTime: '3 min read',
+    excerpt:
+      'Structure is the whole trick. Work stays first, and everything else gets built around it.',
+    body: [
+      'I\'m working through a systems-focused master\'s alongside my day job at AMD — recent coursework has included operating systems and software architecture, both picked because they connect directly to the kind of work I already do.',
+      'The way I make it work is simple: work comes first, always. School gets scheduled into the hours around it, not the other way around. That structure is really the whole trick, and it\'s less complicated than people expect.',
+      'What I like about a systems-focused program specifically is how often it maps back onto things I run into during the day. A concept from an OS course shows up in a debug session a week later, or a design pattern from an architecture class clarifies something about how a piece of firmware is put together. It ends up feeling like one continuous thing instead of two separate obligations pulling in different directions.',
+      'Doing this on top of a full-time job forces good habits — planning ahead, not letting things pile up, being deliberate about where time goes. Those happen to be the same habits that make you better at the job itself, so the two reinforce each other more than they compete.',
+      'If I had to give advice to someone considering it: be clear about why you\'re doing it before you start. Wanting to actually learn the material makes the structure easy to sustain. Doing it just to collect another credential makes it a lot harder to keep up.',
+    ],
+  },
 ];
 
 export const contact = {
