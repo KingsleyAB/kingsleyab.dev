@@ -17,7 +17,7 @@ export const personal = {
   linkedin: 'https://linkedin.com/in/boateng-kingsley',
   github: 'https://github.com/KingsleyAB',
   resumeUrl:
-    'https://drive.google.com/uc?export=download&id=1Dz_SU-v8anhqSgAMTmFsVW5wzG2du7cA',
+    'https://drive.google.com/uc?export=download&id=1MqQ2yj_T-J4bD8JjArw37inqKwfGtRo4',
   // The typewriter cycles through these titles on the hero.
   rotatingTitles: [
     'Firmware Engineer',
